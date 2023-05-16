@@ -17,14 +17,47 @@
         </tr>
         <tr>
             <td>Data de Nascimento:</td>
-            <td>{{ cliente.data_nascimento}}</td>
+            <td>{{ cliente.data_nascimento|date:"d/m/Y" }}</td>
         </tr>
         <tr>
             <td>Endereço:</td>
-            <td>Av. Marechal, 1500 - São Miguel - São Paulo</td>
+            <td>{{ cliente.endereco}}, {{ cliente.nro}} - {{ cliente.bairro}} - {{ cliente.cidade}}</td>
         </tr>
-    </table>
+        <tr>
+            <td>Cpf:</td>
+            <td>{{ cliente.cpf }}</td>
+        </tr>
+        <tr>
+            <td>E-mail:</td>
+            <td>{{ cliente.email }}</td>
+        </tr>
+        <tr>
+            <td>Matrícula:</td>
+            <td>{{ cliente.matricula }}</td>
+        </tr>
+        <tr>
+            <td>Estado Civil:</td>
+            <td>{{ cliente.get_estado_civil_display }} </td>
+        </tr>
+        <tr>
+            <td>Profissão:</td>
+            <td>{{ cliente.profissao }}</td>
+        </tr>
+        <tr>
+            <td>Interesses:</td>
+            <td>{{ cliente.interesses.all|join:", " }}</td>
+        </tr>
+        <tr>
+            <td>Telefones:</td>
+            <td>
+                {% for tel in telefones%}
+                    ({{ tel.ddd }}) {{ tel.numero }} <br>
+                {% endfor %}
+            </td>
+        </tr>
+               
 
+    </table>
 
 </body>
 </html>
